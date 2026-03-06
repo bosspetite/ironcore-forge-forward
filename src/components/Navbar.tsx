@@ -59,8 +59,9 @@ const Navbar = () => {
                 {link}
               </a>
             ))}
+            <ThemeToggle />
             <a
-              href="#contact"
+              href="#pricing"
               className="bg-primary text-primary-foreground px-6 py-2 rounded-md font-semibold"
               onClick={() => setOpen(false)}
             >
