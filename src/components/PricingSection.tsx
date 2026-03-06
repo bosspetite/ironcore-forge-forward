@@ -67,6 +67,16 @@ const PricingSection = () => (
             </ul>
             <a
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.querySelector("#contact");
+                if (element) {
+                  const offset = 64;
+                  const elementPosition = element.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+                  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+              }}
               className={`block text-center py-3 rounded-md font-bold transition-all hover:scale-105 ${
                 p.popular
                   ? "bg-primary text-primary-foreground"

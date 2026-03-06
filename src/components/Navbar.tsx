@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { handleAnchorClick } from "@/lib/smoothScroll";
 
 const navLinks = ["Home", "Classes", "Trainers", "Pricing", "Contact"];
 
@@ -10,7 +11,12 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <a href="#home" className="text-xl font-bold">
+        <a 
+          href="#home" 
+          onClick={(e) => handleAnchorClick(e, "#home")}
+          className="text-xl font-bold hover:opacity-80 transition-opacity"
+          aria-label="IronCore Fitness Home"
+        >
           <span className="text-primary">IronCore</span>{" "}
           <span className="text-foreground">Fitness</span>
         </a>
@@ -21,6 +27,7 @@ const Navbar = () => {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
+              onClick={(e) => handleAnchorClick(e, `#${link.toLowerCase()}`)}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {link}
@@ -29,6 +36,7 @@ const Navbar = () => {
           <ThemeToggle />
           <a
             href="#pricing"
+            onClick={(e) => handleAnchorClick(e, "#pricing")}
             className="bg-primary text-primary-foreground px-5 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Join Now
@@ -40,6 +48,7 @@ const Navbar = () => {
           className="md:hidden text-foreground"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -53,8 +62,11 @@ const Navbar = () => {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
+                onClick={(e) => {
+                  handleAnchorClick(e, `#${link.toLowerCase()}`);
+                  setOpen(false);
+                }}
                 className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
-                onClick={() => setOpen(false)}
               >
                 {link}
               </a>
@@ -62,8 +74,11 @@ const Navbar = () => {
             <ThemeToggle />
             <a
               href="#pricing"
+              onClick={(e) => {
+                handleAnchorClick(e, "#pricing");
+                setOpen(false);
+              }}
               className="bg-primary text-primary-foreground px-6 py-2 rounded-md font-semibold"
-              onClick={() => setOpen(false)}
             >
               Join Now
             </a>

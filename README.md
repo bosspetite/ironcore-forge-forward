@@ -1,10 +1,83 @@
-# Welcome to your Lovable project
+# IronCore Fitness - Modern Gym Website
 
-## Project info
+A beautiful, fully functional gym website built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Quick Start
 
-## How can I edit this code?
+```sh
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📋 Features
+
+- ✅ Fully responsive design (mobile, tablet, desktop)
+- ✅ Dark mode toggle
+- ✅ Smooth scrolling navigation
+- ✅ Contact form with email integration (Web3Forms)
+- ✅ SEO optimized
+- ✅ Accessible (ARIA labels, keyboard navigation)
+- ✅ Modern UI with shadcn/ui components
+- ✅ Production ready
+
+## 🌐 Deploy Now
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
+**Quick Deploy Options:**
+- **Vercel**: Push to GitHub → Import to Vercel → Deploy (easiest!)
+- **Netlify**: Push to GitHub → Import to Netlify → Deploy
+- **GitHub Pages**: Run `npm run deploy` (after setup)
+
+## 📧 Contact Form Setup
+
+**📖 [Complete Setup Guide →](./CONTACT_FORM_SETUP.md)**
+
+Quick steps:
+1. Get your free Web3Forms access key from [web3forms.com](https://web3forms.com)
+2. Create a `.env` file: `VITE_WEB3FORMS_KEY=your_key_here`
+3. For production: Add the same variable in Vercel/Netlify environment settings
+4. The form will send emails directly to your inbox!
+
+**Important**: Make sure to add `VITE_WEB3FORMS_KEY` as an environment variable in your hosting platform (Vercel/Netlify) for production!
+
+## 🎨 Customization
+
+- Update content in component files (`src/components/`)
+- Change colors in `src/index.css` (CSS variables)
+- Add images to `src/assets/`
+- Modify sections as needed
+
+## 📁 Project Structure
+
+```
+src/
+├── components/     # React components (Navbar, Hero, etc.)
+├── pages/         # Page components
+├── lib/           # Utilities
+├── assets/        # Images and static files
+└── index.css      # Global styles
+```
+
+## 🛠️ Technologies
+
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **shadcn/ui** - UI components
+- **React Router** - Navigation
+
+## 📝 How can I edit this code?
 
 There are several ways of editing your application.
 

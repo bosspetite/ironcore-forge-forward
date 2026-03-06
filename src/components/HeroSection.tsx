@@ -28,12 +28,32 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#pricing"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector("#pricing");
+              if (element) {
+                const offset = 64;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+              }
+            }}
             className="bg-primary text-primary-foreground px-8 py-3 rounded-md font-bold text-lg hover:scale-105 transition-transform"
           >
             Start Today
           </a>
           <a
             href="#classes"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector("#classes");
+              if (element) {
+                const offset = 64;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+              }
+            }}
             className="border border-foreground/30 text-foreground px-8 py-3 rounded-md font-bold text-lg hover:scale-105 hover:border-primary hover:text-primary transition-all"
           >
             See Our Classes

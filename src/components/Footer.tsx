@@ -15,7 +15,20 @@ const Footer = () => (
           <ul className="space-y-2 text-sm text-muted-foreground">
             {["Home", "Classes", "Trainers", "Pricing", "Contact"].map((l) => (
               <li key={l}>
-                <a href={`#${l.toLowerCase()}`} className="hover:text-primary transition-colors">
+                <a 
+                  href={`#${l.toLowerCase()}`} 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.querySelector(`#${l.toLowerCase()}`);
+                    if (element) {
+                      const offset = 64;
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - offset;
+                      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    }
+                  }}
+                  className="hover:text-primary transition-colors"
+                >
                   {l}
                 </a>
               </li>
