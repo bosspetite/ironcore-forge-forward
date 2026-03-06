@@ -53,8 +53,8 @@ const PricingSection = () => (
             )}
             <h3 className="text-2xl font-bold mb-2">{p.name}</h3>
             <div className="mb-6">
-              <span className="text-5xl font-black">${p.price}</span>
-              <span className="text-muted-foreground text-sm">/month</span>
+              <span className="text-5xl font-black">{p.price === 0 ? "Free" : `$${p.price}`}</span>
+              {p.price > 0 && <span className="text-muted-foreground text-sm">/month</span>}
             </div>
             <hr className="border-border mb-6" />
             <ul className="space-y-3 mb-8 flex-1">
