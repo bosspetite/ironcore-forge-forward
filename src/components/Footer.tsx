@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => (
   <footer className="bg-background border-t border-border py-14">
     <div className="container mx-auto px-4">
@@ -38,6 +40,9 @@ const Footer = () => (
         <div>
           <h4 className="font-bold mb-3">Follow Us</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>
+              <Link to="/social" className="hover:text-primary transition-colors">Community Feed</Link>
+            </li>
             <li><a href="#" className="hover:text-primary transition-colors">Instagram</a></li>
             <li><a href="#" className="hover:text-primary transition-colors">YouTube</a></li>
             <li><a href="#" className="hover:text-primary transition-colors">Twitter</a></li>

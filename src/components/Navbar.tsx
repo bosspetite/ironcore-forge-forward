@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import { handleAnchorClick } from "@/lib/smoothScroll";
 
@@ -33,6 +34,12 @@ const Navbar = () => {
               {link}
             </a>
           ))}
+          <Link
+            to="/social"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+          >
+            Community
+          </Link>
           <ThemeToggle />
           <a
             href="#pricing"
@@ -71,6 +78,13 @@ const Navbar = () => {
                 {link}
               </a>
             ))}
+            <Link
+              to="/social"
+              onClick={() => setOpen(false)}
+              className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              Community
+            </Link>
             <ThemeToggle />
             <a
               href="#pricing"
