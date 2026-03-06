@@ -2,6 +2,12 @@ import { Check } from "lucide-react";
 
 const plans = [
   {
+    name: "Free",
+    price: 0,
+    features: ["Access to gym floor (off-peak hours)", "Locker room access", "Mobile app access", "1 group class per week"],
+    popular: false,
+  },
+  {
     name: "Basic",
     price: 29,
     features: ["Access to gym floor", "Locker room access", "2 group classes per week", "Mobile app access"],
@@ -30,7 +36,7 @@ const PricingSection = () => (
           No hidden fees. No contracts. Just results.
         </p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto items-stretch">
         {plans.map((p) => (
           <div
             key={p.name}
@@ -47,8 +53,8 @@ const PricingSection = () => (
             )}
             <h3 className="text-2xl font-bold mb-2">{p.name}</h3>
             <div className="mb-6">
-              <span className="text-5xl font-black">${p.price}</span>
-              <span className="text-muted-foreground text-sm">/month</span>
+              <span className="text-5xl font-black">{p.price === 0 ? "Free" : `$${p.price}`}</span>
+              {p.price > 0 && <span className="text-muted-foreground text-sm">/month</span>}
             </div>
             <hr className="border-border mb-6" />
             <ul className="space-y-3 mb-8 flex-1">

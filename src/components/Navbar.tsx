@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = ["Home", "Classes", "Trainers", "Pricing", "Contact"];
 
@@ -25,8 +26,9 @@ const Navbar = () => {
               {link}
             </a>
           ))}
+          <ThemeToggle />
           <a
-            href="#contact"
+            href="#pricing"
             className="bg-primary text-primary-foreground px-5 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Join Now
@@ -57,8 +59,9 @@ const Navbar = () => {
                 {link}
               </a>
             ))}
+            <ThemeToggle />
             <a
-              href="#contact"
+              href="#pricing"
               className="bg-primary text-primary-foreground px-6 py-2 rounded-md font-semibold"
               onClick={() => setOpen(false)}
             >
