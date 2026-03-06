@@ -2,6 +2,12 @@ import { Check } from "lucide-react";
 
 const plans = [
   {
+    name: "Free",
+    price: 0,
+    features: ["Access to gym floor (off-peak hours)", "Locker room access", "Mobile app access", "1 group class per week"],
+    popular: false,
+  },
+  {
     name: "Basic",
     price: 29,
     features: ["Access to gym floor", "Locker room access", "2 group classes per week", "Mobile app access"],
