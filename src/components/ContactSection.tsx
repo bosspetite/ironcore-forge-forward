@@ -50,13 +50,24 @@ const ContactSection = () => {
       // Get Web3Forms access key from environment variable
       const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
       
-      if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE") {
-        throw new Error("Contact form is not configured. Please set up your Web3Forms access key.");
+      // Debug logging (only in development)
+      if (import.meta.env.DEV) {
+        console.log("🔍 Contact Form - Web3Forms Key:", accessKey ? `✓ Loaded (${accessKey.substring(0, 8)}...)` : "✗ Missing");
       }
+      
+      // Validate access key
+      if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE" || (typeof accessKey === "string" && accessKey.trim() === "")) {
+        const errorMsg = import.meta.env.DEV
+          ? "Contact form is not configured. Please:\n1. Stop the dev server (Ctrl+C)\n2. Restart: npm run dev\n\nThe .env file is now correctly formatted - restart to load it!"
+          : "Contact form is not configured. Please add VITE_WEB3FORMS_KEY to your environment variables.";
+        throw new Error(errorMsg);
+      }
+      
+      const finalAccessKey = accessKey;
 
       // Create form data with all required fields
       const formData = new FormData();
-      formData.append("access_key", accessKey);
+      formData.append("access_key", finalAccessKey);
       formData.append("subject", `New Contact Form Submission - ${form.interest}`);
       formData.append("name", form.name.trim());
       formData.append("email", form.email.trim());
