@@ -1,55 +1,88 @@
-import { Link } from "react-router-dom";
+import { smoothScrollTo } from "@/lib/smoothScroll";
+
+const socialLinks = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/emmypetite20?igsh=MW1sNDB3MGNwOGJsMw==",
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@BasseyObeys",
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@raymie_1",
+  },
+  {
+    name: "X (Twitter)",
+    href: "https://x.com/BasseyObey15213",
+  },
+];
+
+const quickLinks = [
+  { label: "Home", href: "#home" },
+  { label: "Classes", href: "#classes" },
+  { label: "Trainers", href: "#trainers" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Community", href: "#community" },
+  { label: "Contact", href: "#contact" },
+];
 
 const Footer = () => (
-  <footer className="bg-background border-t border-border py-14">
+  <footer className="border-t border-border bg-background py-14">
     <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+      <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-3">
         <div>
-          <p className="text-xl font-bold mb-2">
+          <p className="mb-2 text-xl font-bold">
             <span className="text-primary">IronCore</span> Fitness
           </p>
-          <p className="text-muted-foreground text-sm">
-            Built for those who are serious about change.
+          <p className="text-sm text-muted-foreground">
+            No excuses. Just results.
           </p>
         </div>
+
         <div>
-          <h4 className="font-bold mb-3">Quick Links</h4>
+          <h4 className="mb-3 font-bold">Quick Links</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            {["Home", "Classes", "Trainers", "Pricing", "Contact"].map((l) => (
-              <li key={l}>
-                <a 
-                  href={`#${l.toLowerCase()}`} 
+            {quickLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    const element = document.querySelector(`#${l.toLowerCase()}`);
-                    if (element) {
-                      const offset = 64;
-                      const elementPosition = element.getBoundingClientRect().top;
-                      const offsetPosition = elementPosition + window.pageYOffset - offset;
-                      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                    }
+                    smoothScrollTo(link.href);
                   }}
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-primary"
                 >
-                  {l}
+                  {link.label}
                 </a>
               </li>
             ))}
           </ul>
         </div>
+
         <div>
-          <h4 className="font-bold mb-3">Follow Us</h4>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>
-              <Link to="/social" className="hover:text-primary transition-colors">Community Feed</Link>
-            </li>
-            <li><a href="#" className="hover:text-primary transition-colors">Instagram</a></li>
-            <li><a href="#" className="hover:text-primary transition-colors">YouTube</a></li>
-            <li><a href="#" className="hover:text-primary transition-colors">Twitter</a></li>
+          <h4 className="mb-3 font-bold">Follow Us</h4>
+          <ul className="space-y-3 text-sm text-muted-foreground">
+            {socialLinks.map((social) => (
+              <li key={social.name}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-foreground transition-colors hover:text-primary"
+                  aria-label={`${social.name} profile`}
+                >
+                  {social.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-      <hr className="border-border mb-6" />
+
+      <hr className="mb-6 border-border" />
+
       <p className="text-center text-xs text-muted-foreground">
         © 2025 IronCore Fitness. All rights reserved.
       </p>
