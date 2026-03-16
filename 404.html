@@ -5,28 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IronCore Fitness – Push Your Limits. Transform Your Body.</title>
     <script>
-      // GitHub Pages SPA fallback - redirect to index.html
-      // This handles client-side routing for React Router
-      var path = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-      
-      // If we're not already on index.html, redirect there
-      if (path !== '/index.html' && path !== '/') {
-        var newPath = path.endsWith('/') ? path.slice(0, -1) : path;
-        window.location.replace(window.location.origin + '/index.html' + newPath + search + hash);
-      } else {
-        // If we're already on index.html, just reload to let React Router handle it
-        window.location.replace(window.location.origin + '/index.html' + search + hash);
-      }
+      (function () {
+        var repoBase = "/ironcore-forge-forward";
+        var locationPath = window.location.pathname;
+        var search = window.location.search || "";
+        var hash = window.location.hash || "";
+
+        if (!locationPath.startsWith(repoBase)) {
+          window.location.replace(window.location.origin + repoBase + "/" + search + hash);
+          return;
+        }
+
+        var routePath = locationPath.slice(repoBase.length);
+
+        if (!routePath || routePath === "/404.html") {
+          routePath = "/";
+        }
+
+        var target =
+          window.location.origin +
+          repoBase +
+          "/?p=" +
+          encodeURIComponent(routePath + search + hash);
+
+        window.location.replace(target);
+      })();
     </script>
   </head>
   <body>
-    <div id="root">
-      <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif;">
-        <p>Loading...</p>
-      </div>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+      "
+    >
+      <p>Redirecting...</p>
     </div>
   </body>
 </html>
-
